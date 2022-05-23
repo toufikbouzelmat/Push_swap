@@ -6,7 +6,7 @@
 /*   By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:11:18 by tbouzalm          #+#    #+#             */
-/*   Updated: 2022/05/17 23:11:22 by tbouzalm         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:28:15 by tbouzalm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void	ft_pa(t_tab *tab)
 	}
 	tab->tab_a[0] = tab->tab_b[tab->head_b];
 	tab->head_b++;
+	tab->size_a++;
+	tab->size_b--;
+	write(1, "pa\n", 3);
 }
 
 void	ft_ra(t_tab *tab, int j)

@@ -6,7 +6,7 @@
 /*   By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 14:48:57 by tbouzalm          #+#    #+#             */
-/*   Updated: 2022/05/17 23:10:36 by tbouzalm         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:26:13 by tbouzalm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	ft_pb(t_tab *tab)
 	}
 	tab->last_a--;
 	write(1, "pb\n", 3);
+	tab->size_a--;
+	tab->size_b++;
 }
 
 void	ft_rb(t_tab *tab, int j)
@@ -72,5 +74,5 @@ void	ft_rrb(t_tab *tab, int j)
 	}
 	tab->tab_b[tab->head_b] = tmp;
 	if (j)
-		write(1, "rra\n", 4);
+		write(1, "rrb\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 22:14:14 by tbouzalm          #+#    #+#             */
-/*   Updated: 2022/05/17 23:10:05 by tbouzalm         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:05:35 by tbouzalm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ typedef struct s_tab
 {
 	int	*tab_a;
 	int	*tab_b;
+	int	*tab_s;
 	int	head_a;
 	int	head_b;
 	int	last_a;
 	int	last_b;
 	int	size;
-	int	index;
+	int	size_b;
+	int	size_a;
 }	t_tab;
 
 int		ft_atoi(const	char *str);
@@ -56,4 +58,8 @@ void	ft_algo_sort_tree(t_tab *tab);
 void	ft_algo_sort_five(t_tab *tab);
 int		get_min(t_tab *tab);
 int		get_max(t_tab *tab);
+void	ft_algo_100(t_tab *tab,int k);
+void	ft_sort_s(t_tab *tab);
+void	ft_stcpy(t_tab *tab);
+int		find_val_b(int val, t_tab *tab);
 #endif

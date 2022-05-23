@@ -6,7 +6,7 @@
 #    By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 22:42:24 by tbouzalm          #+#    #+#              #
-#    Updated: 2022/05/17 23:18:51 by tbouzalm         ###   ########.fr        #
+#    Updated: 2022/05/18 21:33:48 by tbouzalm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = push_swap.c check_arg.c ft_strjoin.c ft_strdup.c ft_split.c check_av2.c al
 		instruction_a.c \
 		instruction_b.c \
 		get_min_max_A_B.c \
+		ft_algo_100.c \
 
 OBJ = ${SRC:.c=.o}
 
