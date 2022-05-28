@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 22:17:33 by tbouzalm          #+#    #+#             */
-/*   Updated: 2022/05/27 21:58:00 by tbouzalm         ###   ########.fr       */
+/*   Created: 2022/05/26 18:13:58 by tbouzalm          #+#    #+#             */
+/*   Updated: 2022/05/27 16:26:01 by tbouzalm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	init(t_tab *tab, int size)
 {
@@ -25,6 +25,35 @@ void	init(t_tab *tab, int size)
 	tab->size_b = 0;
 }
 
+static void	read_arguments(t_tab *tab)
+{
+	char	*arg;
+
+	arg = get_next_line(0);
+	while (arg)
+	{
+		execute_instruction(tab, arg);
+		free(arg);
+		arg = get_next_line(0);
+	}
+	free(arg);
+}
+
+int	ft_check_sort(t_tab *tab)
+{
+	int	i;
+
+	i = 0;
+	while (i < tab->size)
+	{
+		if (tab->tab_a[tab->head_a] < tab->tab_a[tab->head_a + 1])
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_tab	tab;
@@ -36,19 +65,10 @@ int	main(int ac, char **av)
 	check_empty_arg(av);
 	ft_pass_arg(ac, av, &tab);
 	ft_check_nbr(&tab);
-	ft_sort_s(&tab);
-	free(tab.tab_a);
-	tab.tab_a = tab.tab_s;
-	if (tab.size == 3)
-		ft_algo_sort_tree(&tab);
-	else if (tab.size <= 5)
-		ft_algo_sort_five(&tab);
-	else if (tab.size <= 100)
-		ft_algo_100(&tab, 3);
-	else
-		ft_algo_100(&tab, 5);
-	free(tab.tab_b);
-	free(tab.tab_s);
-	// while (1);
+	read_arguments(&tab);
+	if (ft_check_sort(&tab) == 1)
+		write(1, "OK\n", 3);
+	else if (ft_check_sort(&tab) == 0)
+		write(1, "KO\n", 3);
 	return (0);
 }

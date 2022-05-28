@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arg.c                                        :+:      :+:    :+:   */
+/*   check_arg_bns.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 11:58:34 by tbouzalm          #+#    #+#             */
-/*   Updated: 2022/05/27 21:57:25 by tbouzalm         ###   ########.fr       */
+/*   Created: 2022/05/26 18:20:40 by tbouzalm          #+#    #+#             */
+/*   Updated: 2022/05/27 15:56:31 by tbouzalm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const	char *str)
 {
 	int		i;
 	int		s;
@@ -38,7 +38,6 @@ int	ft_atoi(char *str)
 		if (nbr * s > INT_MAX || nbr * s < INT_MIN)
 			ft_erreur();
 	}
-	free(str);
 	return (nbr * s);
 }
 
@@ -61,18 +60,12 @@ void	ft_pass_arg(int ac, char **av, t_tab *stack_a)
 	}
 	s = ft_split(buff, ' ');
 	j = 0;
-	while (s[j] != '\0')
-	{
-		tab[j] = ft_atoi(s[j]);
-		j++;
-	}
-	free(s);
+	while (*s != '\0')
+		tab[j++] = ft_atoi(*s++);
 	j = 0;
 	c = 0;
 	while (j < stack_a->size)
 		stack_a->tab_a[c++] = tab[j++];
-	free (tab);
-	free(buff);
 }
 
 void	ft_check_nbr(t_tab *tab)

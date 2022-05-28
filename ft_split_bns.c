@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_bns.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 13:51:47 by tbouzalm          #+#    #+#             */
-/*   Updated: 2022/05/27 21:32:00 by tbouzalm         ###   ########.fr       */
+/*   Created: 2022/05/26 18:24:02 by tbouzalm          #+#    #+#             */
+/*   Updated: 2022/05/26 18:24:13 by tbouzalm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 static int	count_words(char const *str, char c)
 {
@@ -69,7 +69,7 @@ static char	*malloc_word(char const *str, char c)
 	return (word);
 }
 
-char	**ft_split(char *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	int		i;

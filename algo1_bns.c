@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo1.c                                            :+:      :+:    :+:   */
+/*   algo1_bns.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/16 12:19:49 by tbouzalm          #+#    #+#             */
-/*   Updated: 2022/05/27 20:48:15 by tbouzalm         ###   ########.fr       */
+/*   Created: 2022/05/26 20:21:17 by tbouzalm          #+#    #+#             */
+/*   Updated: 2022/05/27 15:52:19 by tbouzalm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int	ft_check_if_sorted(t_tab *tab)
 {
@@ -61,7 +61,7 @@ void	push_two_ele_stack_b(t_tab *tab)
 			i++;
 		}
 		else
-			ft_ra(tab, 1);
+			ft_ra(tab, 0);
 		if (i == 2)
 			break ;
 	}
@@ -69,6 +69,8 @@ void	push_two_ele_stack_b(t_tab *tab)
 
 void	ft_algo_sort_five(t_tab *tab)
 {
+	int	i;
+
 	push_two_ele_stack_b(tab);
 	ft_algo_sort_tree(tab);
 	while (tab->head_b < tab->size)
@@ -80,5 +82,11 @@ void	ft_algo_sort_five(t_tab *tab)
 		}
 		else
 			ft_pa(tab, 1);
+	}
+	i = 0;
+	while (i < tab->size)
+	{
+		printf("tab[%d] = %d\n", i, tab->tab_a[i]);
+		i++;
 	}
 }

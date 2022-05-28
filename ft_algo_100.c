@@ -6,7 +6,7 @@
 /*   By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 00:02:26 by tbouzalm          #+#    #+#             */
-/*   Updated: 2022/05/23 16:07:03 by tbouzalm         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:23:22 by tbouzalm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,56 +60,42 @@ int	find_val_b(int val, t_tab *tab)
 	return (0);
 }
 
-void	ft_algo_100(t_tab *tab,int k)
+void	ft_act_inst(t_tab *tab, int min, int avg)
+{
+	while (tab->size_b <= min + avg)
+	{
+		if (tab->tab_a[tab->head_a] <= avg + min)
+			ft_pb(tab, 1);
+		else if (tab->tab_b[tab->head_b] >= min
+			&& tab->tab_b[tab->head_b] <= min + avg / 2)
+			ft_rr(tab);
+		else
+			ft_ra(tab, 1);
+		if (tab->tab_b[tab->head_b] >= min
+			&& tab->tab_b[tab->head_b] <= min + avg / 2)
+			ft_rb(tab, 1);
+	}
+}
+
+void	ft_algo_100(t_tab *tab, int k)
 {
 	int	min;
 	int	avg;
 	int	index;
-	int	i;
 
 	min = 0;
 	avg = tab->last_a / k;
+	index = 0;
 	while (tab->size_a > 3)
 	{
-		while (tab->size_b <= min + avg)
-		{
-			if (tab->tab_a[tab->head_a] <= avg + min)
-				ft_pb(tab);
-			else if (tab->tab_b[tab->head_b] >= min && tab->tab_b[tab->head_b] <= min + avg / 2)
-				ft_rr(tab);
-			else
-				ft_ra(tab, 1);
-			if (tab->tab_b[tab->head_b] >= min && tab->tab_b[tab->head_b] <= min + avg / 2)
-				ft_rb(tab,1);
-		}
+		ft_act_inst(tab, min, avg);
 		min += avg;
 		avg = tab->last_a / k;
-		if(k > 3)
+		if (k > 3)
 			k--;
 		if (avg < 5)
 			avg = tab->size_a - 3;
-	}
+	}	
 	ft_algo_sort_tree(tab);
-	while (tab->size_b)
-	{
-		index = find_val_b(tab->tab_a[tab->head_a] - 1, tab);
-		if (index <= tab->size_b / 2)
-		{
-			while (tab->tab_b[tab->head_b] != tab->tab_a[tab->head_a] - 1)
-				ft_rb(tab, 1);
-			ft_pa(tab);
-		}
-		else
-		{
-			while (tab->tab_b[tab->head_b] != tab->tab_a[tab->head_a] - 1)
-				ft_rrb(tab, 1);
-			ft_pa(tab);
-		}
-	}
-	i = 0;
-	// while (i <= tab->last_a)
-	// {
-	// 	printf("tab_a[%d]=%d\n", i, tab->tab_a[i]);
-	// 	i++;
-	// }
+	ft_contiunueee_algo(tab, index);
 }
